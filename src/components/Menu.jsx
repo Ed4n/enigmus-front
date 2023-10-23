@@ -5,7 +5,11 @@ import Button from "./Button";
 export default function Menu() {
   const router = useRouter();
   const pushToUser = () => {
-    router.push("/user");
+    router.push("/user-page");
+  };
+
+  const pushToLeaderboard = () => {
+    router.push("/leaderboard");
   };
 
   return (
@@ -14,7 +18,7 @@ export default function Menu() {
         <img className="w-full h-full object-cover " src="/Logo.jpg" alt="" />
       </div>
       <Button func={pushToUser}>Play</Button>
-      <Button func={pushToUser}>Leaderboard</Button>
+      <Button func={pushToLeaderboard}>Leaderboard</Button>
     </div>
   );
 }
