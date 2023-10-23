@@ -1,28 +1,34 @@
 import Button from "@/components/Button";
-import { InputText } from "./../components/InputText";
+import { InputText } from "../components/InputText";
 import MainLayout from "@/layouts/MainLayout";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import useLocalStorage from "@/hooks/useLocalStorage";
+import useLocalStorage from "@/hooks/useLocalStorage.js";
 
-const useAlert = (initalValue, alertName) => {
-  const Alert = () => alert(alertName);
-  return [Alert];
-};
-
-export default function User() {
+export default function userPage() {
   const router = useRouter();
-  const [Alert] = useAlert(10, "Hose");
 
   const [user, setUser] = useState({
     carnet: "",
     name: "",
   });
 
-  const handleStart = () => {
+  useEffect(() => {
+    if (router.pathname === "/user-page") {
+      localStorage.removeItem("user");
+      console.log(localStorage.getItem("user"));
+    }
+  }, [router.pathname]);
+
+  const handleStart = (e) => {
+    if (e.key === "Enter") {
+      alert("Enter");
+    }
+
     if (user.carnet === "" || user.name === "") {
       alert("Llena los campos");
     } else {
+      localStorage.setItem("user", JSON.stringify(user));
       router.push("/game");
     }
   };
@@ -41,7 +47,6 @@ export default function User() {
         <InputText name="carnet" placeholder="Carnet" func={handleChange} />
         <InputText name="name" placeholder="Nombre" func={handleChange} />
         <Button func={handleStart}>Start</Button>
-        <button onClick={Alert}>aaaaaaaaa</button>
       </MainLayout>
     </div>
   );

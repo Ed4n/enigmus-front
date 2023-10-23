@@ -1,12 +1,11 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "./Button";
 
 export default function Menu() {
   const router = useRouter();
-
   const pushToUser = () => {
-    router.push("/User");
+    router.push("/user");
   };
 
   return (
