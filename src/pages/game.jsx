@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import GameComponent from "@/components/game/GameComponent";
+import { UserContext, UserProvider } from "@/context/UserContext";
+import React, { useContext, useEffect } from "react";
 
 export default function game() {
-  useEffect(() => {
-    console.log(localStorage.getItem("user"));
-  }),
-    [];
-
-  return <div></div>;
+  return (
+    <div>
+      <UserProvider>
+        <GameComponent />
+      </UserProvider>
+    </div>
+  );
 }
