@@ -5,10 +5,9 @@ export default function LeaderboardList() {
 
   useEffect(() => {
     const fetchData = async () => {
+      const baseUrl = "http://localhost:3300/api/v1";
       try {
-        const response = await fetch(
-          "http://localhost:3300/api/v1/players/highest"
-        );
+        const response = await fetch(baseUrl + "/players/highest");
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

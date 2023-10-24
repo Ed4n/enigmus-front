@@ -31,6 +31,7 @@ function UserProvider({ children }) {
         setUser,
         setUserToLocalStorage,
         removeUserFromLocalStorage,
+        getUserFromLocalStorage,
       }}
     >
       {children}
