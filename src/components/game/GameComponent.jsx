@@ -1,10 +1,17 @@
+import { Results } from "./Results";
 import { UserContext } from "@/context/UserContext";
 import MainLayout from "@/layouts/MainLayout";
 import React, { useContext, useEffect, useState } from "react";
 import QuestionsList from "./QuestionsList";
+import Button from "../Button";
+import { useRouter } from "next/router";
 
 export default function GameComponent() {
-  const { user, getUserFromLocalStorage } = useContext(UserContext);
+  const { user, setUser, getUserFromLocalStorage } = useContext(UserContext);
+  const [slideCounter, setSlideCounter] = useState(100);
+
+  const router = useRouter();
+  const baseUrl = "http://localhost:3300/api/v1";
 
   const [userGameData, setUserGameData] = useState({
     carnet: "",
@@ -15,13 +22,17 @@ export default function GameComponent() {
   const [questionsData, setQuestionsData] = useState(null);
 
   useEffect(() => {
-    const user = getUserFromLocalStorage();
+    const userLocalStorage = getUserFromLocalStorage();
     fetchQuestions();
-    setUserGameData(user);
+    setUser(userLocalStorage);
   }, []);
 
+  useEffect(() => {
+    postUser();
+    console.log(JSON.stringify(user));
+  }, [slideCounter]);
+
   const fetchQuestions = async () => {
-    const baseUrl = "http://localhost:3300/api/v1";
     try {
       const response = await fetch(baseUrl + "/questions");
       if (!response.ok) {
@@ -34,9 +45,57 @@ export default function GameComponent() {
     }
   };
 
+  function postUserFetch() {
+    const url = baseUrl + "/players";
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((responseData) => {
+        console.log("POST request successful:", responseData);
+      })
+      .catch((error) => {
+        console.error("POST request error:", error);
+      });
+  }
+
+  const postUser = () => {
+    if (slideCounter === 1100) postUserFetch();
+  };
+
+  const pushToUser = () => {
+    router.push("/user-page");
+  };
+
+  const pushToLeaderboard = () => {
+    router.push("/leaderboard");
+  };
+
   return (
     <MainLayout>
-      <QuestionsList questions={questionsData} />
+      {slideCounter === 1100 ? (
+        <Results
+          user={user}
+          pushToUser={pushToUser}
+          pushToLeaderboard={pushToLeaderboard}
+        />
+      ) : (
+        <QuestionsList
+          questions={questionsData}
+          slideCounter={slideCounter}
+          setSlideCounter={setSlideCounter}
+        />
+      )}
     </MainLayout>
   );
 }

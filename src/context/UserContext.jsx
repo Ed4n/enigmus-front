@@ -11,6 +11,8 @@ function UserProvider({ children }) {
     points: 0,
   });
 
+  const [slidesAmout, setSlidesAmout] = useState(0);
+
   const setUserToLocalStorage = (user) => {
     localStorage.setItem("user", JSON.stringify(user));
   };
@@ -32,6 +34,8 @@ function UserProvider({ children }) {
         setUserToLocalStorage,
         removeUserFromLocalStorage,
         getUserFromLocalStorage,
+        slidesAmout,
+        setSlidesAmout,
       }}
     >
       {children}

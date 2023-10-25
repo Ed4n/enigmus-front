@@ -23,7 +23,7 @@ export default function LeaderboardList() {
   }, []);
 
   return data ? (
-    <div className=" w-[90%] sm:w-full max-w-[800px] flex items-center justify-center flex-col bg-sphinx-yellow-100 rounded-md shadow-md p-5 text-sphinx-yellow-800 ">
+    <div className=" w-[90%] sm:w-full max-w-[800px] max-h-[600px] overflow-y-scroll flex  flex-col bg-sphinx-yellow-100 rounded-md shadow-md p-5 text-sphinx-yellow-800 ">
       <div className="flex w-full bg-sphinx-yellow-200 px-5 py-1 rounded-full ">
         <div className="flex  items-center  w-[30%]">Carnet</div>
         <div className="flex  items-center  w-[40%]">Nombre</div>

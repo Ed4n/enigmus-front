@@ -1,9 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import { UserContext } from "@/context/UserContext";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
-export default function QuestionsList({ questions }) {
-  const [slideCounter, setSlideCounter] = useState(100);
-  const [points, setPoints] = useState(0);
-
+export default function QuestionsList({
+  questions,
+  slideCounter,
+  setSlideCounter,
+}) {
+  const { user, setUser } = useContext(UserContext);
+  // const [points, setPoints] = useState(0);
   const divRef = useRef(null);
   const questionRef = useRef(null);
 
@@ -11,7 +15,7 @@ export default function QuestionsList({ questions }) {
     const id = questions.findIndex((item) => item._id === questionId);
     const questionAnswer = questions[id].answer;
     if (!questionAnswer) {
-      setPoints(points + 1);
+      setUser({ ...user, points: user.points + 1 });
     }
     console.log(id);
     handleNextQuestion();
@@ -21,26 +25,27 @@ export default function QuestionsList({ questions }) {
     const id = questions.findIndex((item) => item._id === questionId);
     const questionAnswer = questions[id].answer;
     if (questionAnswer) {
-      setPoints(points + 1);
+      setUser({ ...user, points: user.points + 1 });
     }
 
     handleNextQuestion();
   };
 
   const handleNextQuestion = (e) => {
-    setSlideCounter(slideCounter + 100);
+    const slidesAmout = slideCounter + 100;
+    setSlideCounter(slidesAmout);
     divRef.current.style.marginLeft = ` -${slideCounter}%`;
   };
 
   return (
     <>
-      <h1>Points: {points}</h1>
+      <h1>Points: {user.points}</h1>
 
       {questions ? (
         <div className=" w-[90%] lg:w-[90%] text-sphinx-yellow-900   overflow-hidden transition-all rounded-md">
           <div
             ref={divRef}
-            className=" w-[400%] h-full  flex transition-all duration-300 rounded-md "
+            className=" w-[1000%] h-full  flex transition-all duration-300 rounded-md "
           >
             {questions.map((question) => {
               return (
