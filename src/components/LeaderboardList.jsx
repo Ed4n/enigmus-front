@@ -5,7 +5,7 @@ export default function LeaderboardList() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const baseUrl = "http://localhost:3300/api/v1";
+      const baseUrl = "https://enigmus-api.vercel.app/api/v1";
       try {
         const response = await fetch(baseUrl + "/players/highest");
         if (!response.ok) {

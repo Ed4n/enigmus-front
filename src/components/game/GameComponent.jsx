@@ -11,7 +11,7 @@ export default function GameComponent() {
   const [slideCounter, setSlideCounter] = useState(100);
 
   const router = useRouter();
-  const baseUrl = "http://localhost:3300/api/v1";
+  const baseUrl = "https://enigmus-api.vercel.app/api/v1";
 
   const [userGameData, setUserGameData] = useState({
     carnet: "",
