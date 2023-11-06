@@ -7,7 +7,6 @@ export default function QuestionsList({
   setSlideCounter,
 }) {
   const { user, setUser } = useContext(UserContext);
-  // const [points, setPoints] = useState(0);
   const divRef = useRef(null);
   const questionRef = useRef(null);
 
