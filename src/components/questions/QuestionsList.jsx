@@ -30,7 +30,7 @@ export default function QuestionsList() {
         <div className="flex  items-center  w-[80%]">Pregunta</div>
         <div className="flex  items-center  w-[20%]">Respuesta</div>
       </div>
-      <div className="w-full flex flex-col justify-start items-center bg-sphinx-yellow-100  rounded-md shadow-lg max-h-[500px] overflow-y-scroll ">
+      <div className="w-full flex flex-col justify-start items-center bg-sphinx-yellow-100  rounded-md shadow-lg max-h-[500px] overflow-y-scroll overflow-x-hidden ">
         {questions ? (
           questions.map((question, i) => {
             return <Question i={i} question={question} />;

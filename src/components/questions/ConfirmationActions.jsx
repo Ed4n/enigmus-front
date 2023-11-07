@@ -1,7 +1,7 @@
 import React from "react";
 export function ConfirmationActions({ cancelAction, acceptAction }) {
   return (
-    <div className=" w-full md:w-[20%] h-full flex">
+    <div className=" w-full  md:w-[20%]  h-full flex">
       {/* Cancel */}
       <button
         onClick={cancelAction}
@@ -23,7 +23,7 @@ export function ConfirmationActions({ cancelAction, acceptAction }) {
       {/* Post User */}
       <button
         onClick={acceptAction}
-        className=" bg-sphinx-yellow-600 w-1/2 py-3 h-full flex justify-center items-center hover:w-full transition-all"
+        className=" bg-sphinx-yellow-600 w-1/2 py-3 h-full flex  justify-center items-center hover:w-full transition-all"
       >
         <svg
           className="fill-white w-[30px] h-[30px]"
