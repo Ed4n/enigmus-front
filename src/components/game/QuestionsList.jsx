@@ -7,11 +7,10 @@ export default function QuestionsList({
   setSlideCounter,
 }) {
   const { user, setUser } = useContext(UserContext);
-  // const [points, setPoints] = useState(0);
   const divRef = useRef(null);
   const questionRef = useRef(null);
 
-  const handleFlaseAnswer = (questionId) => {
+  const handleFalse = (questionId) => {
     const id = questions.findIndex((item) => item._id === questionId);
     const questionAnswer = questions[id].answer;
     if (!questionAnswer) {
@@ -62,7 +61,7 @@ export default function QuestionsList({
                   <div className="flex justify-around gap-5 w-[70%] max-w-[600px]  ">
                     <AnswerButton
                       value={false}
-                      handleNextQuestion={() => handleFlaseAnswer(question._id)}
+                      handleNextQuestion={() => handleFalse(question._id)}
                     >
                       Falso
                     </AnswerButton>
