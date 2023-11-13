@@ -38,8 +38,6 @@ export default function QuestionsList({
 
   return (
     <>
-      <h1>Points: {user.points}</h1>
-
       {questions ? (
         <div className=" w-[90%] lg:w-[90%] text-sphinx-yellow-900   overflow-hidden transition-all rounded-md">
           <div
