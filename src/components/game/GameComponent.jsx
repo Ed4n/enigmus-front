@@ -34,7 +34,7 @@ export default function GameComponent() {
 
   const fetchQuestions = async () => {
     try {
-      const response = await fetch(baseUrl + "/questions");
+      const response = await fetch(baseUrl + "/questions/randomQuestions");
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
