@@ -23,13 +23,13 @@ export default function LeaderboardList() {
   }, []);
 
   return data ? (
-    <div className="w-[90%] sm:w-full max-w-[800px] flex  flex-col bg-sphinx-yellow-100 p-5 rounded-md shadow-lg gap-3 text-sphinx-yellow-800">
+    <div className="w-[90%] sm:w-full max-w-[800px] h-[90%] flex  flex-col bg-sphinx-yellow-100 p-5 rounded-md shadow-lg gap-3 text-sphinx-yellow-800">
       <div className="flex w-full bg-sphinx-yellow-200 px-5 py-1 rounded-full ">
         <div className="flex  items-center  w-[30%]">Carnet</div>
         <div className="flex  items-center  w-[40%]">Nombre</div>
         <div className="flex  items-center  w-[30%]">Puntos</div>
       </div>
-      <div className=" w-full  max-w-[800px] flex  flex-col bg-sphinx-yellow-100   overflow-y-scroll max-h-[700px]">
+      <div className=" w-full  max-w-[800px] flex  flex-col bg-sphinx-yellow-100   overflow-y-scroll max-h-[500px] md:max-h-[700px]">
         {data.players.map((item) => (
           <div className="w-full flex flex-col items-center justify-center gap-5">
             <div className="flex w-full max-w-[1000px] border-b-[1px] gap-2 border-sphinx-yellow-200 ">
