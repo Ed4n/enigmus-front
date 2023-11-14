@@ -22,7 +22,7 @@ export function Results({ user, pushToUser, pushToLeaderboard }) {
       </div>
 
       <div className="flex flex-col justify-center items-center gap-3">
-        <Button func={pushToUser}>Play Agin</Button>
+        <Button func={pushToUser}>Play Again</Button>
         <Button func={pushToLeaderboard}>Leaderboard</Button>
       </div>
     </div>
